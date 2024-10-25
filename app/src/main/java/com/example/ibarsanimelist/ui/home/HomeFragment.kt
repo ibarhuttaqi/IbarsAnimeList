@@ -56,7 +56,7 @@ class HomeFragment : Fragment() {
                     }
 
                     is Resource.Error -> {
-                        binding?.apply {
+                        binding.apply {
                             binding.progressBar.visibility = View.GONE
                             binding.viewError.root.visibility = View.VISIBLE
                             binding.viewError.tvError.text =
