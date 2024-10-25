@@ -19,3 +19,19 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+
+
+#-keepattributes Signature
+#-keep class * extends java.lang.reflect.Type { *; }
+#-keep class * implements java.lang.reflect.ParameterizedType
+#-keepclassmembers class * {
+#    ** EMPTY;
+#}
+#-keepclassmembers class * {
+#    ** ANNOTATION;
+#}
+#-keep class androidx.lifecycle.LiveData { *; }
+
+-dontwarn com.google.android.gms.common.annotation.NoNullnessRewrite

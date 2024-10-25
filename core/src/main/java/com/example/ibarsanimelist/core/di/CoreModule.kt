@@ -8,6 +8,8 @@ import com.example.ibarsanimelist.core.data.source.local.room.AnimeDatabase
 import com.example.ibarsanimelist.core.data.source.remote.RemoteDataSource
 import com.example.ibarsanimelist.core.data.source.remote.network.ApiService
 import com.example.ibarsanimelist.core.domain.repository.IAnimeRepository
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -27,10 +29,14 @@ private val loggingInterceptor =
 val databaseModule = module {
     factory { get<AnimeDatabase>().animeDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("dicoding".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             AnimeDatabase::class.java, "Anime.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
