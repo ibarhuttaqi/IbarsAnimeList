@@ -77,7 +77,7 @@ dependencies {
     api(libs.koin.android)
 
     //  leak canary
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.10")
+    debugImplementation(libs.leakcanary.android)
 
     //  encryption
     implementation(libs.android.database.sqlcipher)

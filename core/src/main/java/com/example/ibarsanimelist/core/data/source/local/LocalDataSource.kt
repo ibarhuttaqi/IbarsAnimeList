@@ -7,17 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 class LocalDataSource(private val animeDao: AnimeDao) {
 
-    companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(animeDao: AnimeDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(animeDao)
-            }
-    }
-
-    fun getAllAnime(): Flow<List<AnimeEntity>> = animeDao.getAllAnime()
-
     fun getFavoriteAnime(): Flow<List<AnimeEntity>> = animeDao.getFavoriteAnime()
 
     suspend fun insertAnime(animeList: List<AnimeEntity>) = animeDao.insertAnime(animeList)

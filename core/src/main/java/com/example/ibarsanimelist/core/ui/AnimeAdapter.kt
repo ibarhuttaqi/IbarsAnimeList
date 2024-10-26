@@ -1,5 +1,6 @@
 package com.example.ibarsanimelist.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ibarsanimelist.core.R
 import com.example.ibarsanimelist.core.databinding.ItemListAnimeBinding
-import com.example.ibarsanimelist.core.domain.model.Anime
 import java.util.ArrayList
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.ListViewHolder>() {
@@ -15,6 +15,7 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.ListViewHolder>() {
     private var listData = ArrayList<AnimeUIModel>()
     var onItemClick: ((AnimeUIModel) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<AnimeUIModel>?) {
         if (newListData == null) return
         listData.clear()

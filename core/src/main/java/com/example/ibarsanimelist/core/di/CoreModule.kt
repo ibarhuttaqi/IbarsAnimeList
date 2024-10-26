@@ -19,7 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-private val baseUrl = BuildConfig.BASE_URL
+private const val baseUrl = BuildConfig.BASE_URL
 private val loggingInterceptor =
     if(BuildConfig.DEBUG) {
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)

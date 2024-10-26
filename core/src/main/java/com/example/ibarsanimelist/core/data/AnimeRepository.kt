@@ -16,20 +16,6 @@ class AnimeRepository(
     private val localDataSource: LocalDataSource,
 ) : IAnimeRepository {
 
-    companion object {
-        @Volatile
-        private var instance: AnimeRepository? = null
-
-        fun getInstance(
-            remoteData: RemoteDataSource,
-            localData: LocalDataSource,
-        ): AnimeRepository =
-            instance ?: synchronized(this) {
-                instance
-                    ?: AnimeRepository(remoteData, localData)
-            }
-    }
-
     override fun getAllAnime(): Flow<Resource<List<Anime>>> = flow {
         emit(Resource.Loading())
         try {

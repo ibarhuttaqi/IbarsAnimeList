@@ -11,9 +11,7 @@ import com.example.ibarsanimelist.core.ui.AnimeAdapter
 import com.example.ibarsanimelist.core.utils.DataMapper
 import com.example.ibarsanimelist.di.FavoriteModule
 import com.example.ibarsanimelist.favorite.databinding.FragmentFavoriteBinding
-//import com.example.ibarsanimelist.core.ui.ViewModelFactory
 import com.example.ibarsanimelist.ui.detail.DetailAnimeActivity
-import com.example.ibarsanimelist.ui.home.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
@@ -53,11 +51,12 @@ class FavoriteFragment : Fragment() {
 //            val factory = ViewModelFactory.getInstance(requireActivity())
 //            favoriteViewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
 
-            favoriteViewModel.favoriteAnime.observe(viewLifecycleOwner, { dataAnime ->
+            favoriteViewModel.favoriteAnime.observe(viewLifecycleOwner) { dataAnime ->
                 val uiModelList = dataAnime.map { DataMapper.mapDomainToUI(it) }
                 animeAdapter.setData(uiModelList)
-                binding.viewEmpty.root.visibility = if (dataAnime.isNotEmpty()) View.GONE else View.VISIBLE
-            })
+                binding.viewEmpty.root.visibility =
+                    if (dataAnime.isNotEmpty()) View.GONE else View.VISIBLE
+            }
 
             with(binding.rvAnime) {
                 layoutManager = GridLayoutManager(context, 2)
