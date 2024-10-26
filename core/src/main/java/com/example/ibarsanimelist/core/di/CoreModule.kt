@@ -10,6 +10,7 @@ import com.example.ibarsanimelist.core.data.source.remote.network.ApiService
 import com.example.ibarsanimelist.core.domain.repository.IAnimeRepository
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -42,10 +43,15 @@ val databaseModule = module {
 
 val networkModule = module {
     single {
+        val hostname = "api.jikan.moe"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostname, "sha256/YZwSem2c1YBlv+D/s7sKiaFcVtZ7YK311BoXR1MXR/o=")
+            .build()
         OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
+            .certificatePinner(certificatePinner)
             .build()
     }
     single {
