@@ -68,8 +68,8 @@
 #
 #-dontwarn kotlinx.**
 #
-##remote data source
-##-keep class com.example.ibarsanimelist.core.data.source.remote.response.AnimeResponse { *; }
+#remote data source
+#-keep class com.example.ibarsanimelist.core.data.source.remote.response.AnimeResponse { *; }
 ##-keep class com.example.ibarsanimelist.core.data.source.remote.response.DataItem { *; }
 #-keep class com.example.ibarsanimelist.core.data.source.remote.** { *; }
 #-keep class net.sqlcipher.** { *; }

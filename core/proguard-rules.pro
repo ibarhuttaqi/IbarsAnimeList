@@ -19,3 +19,36 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep the domain and usecase packages
+-keep class com.example.ibarsanimelist.core.domain.** { *; }
+-keep class com.example.ibarsanimelist.core.domain.usecase.** { *; }
+-keep class com.example.ibarsanimelist.core.ui.** { *; }
+-keep class com.example.ibarsanimelist.core.utils.DataMapper { *; }
+
+# Keep any other packages referenced in the error log, like di, model, repository, etc.
+-keep class com.example.ibarsanimelist.core.di.** { *; }
+-keep class com.example.ibarsanimelist.core.domain.model.** { *; }
+-keep class com.example.ibarsanimelist.core.domain.repository.** { *; }
+#-printconfiguration proguard-config.txt
+
+-keep class com.example.ibarsanimelist.core.data.source.remote.response.** { *; }
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class com.example.ibarsanimelist.core.data.Resource { *; }
+
+-keep class com.google.gson.reflect.TypeToken { *; }
+-keepclassmembers class com.google.gson.reflect.TypeToken
+
+-keep class com.example.ibarsanimelist.core.data.source.local.room.** { *; }
+
+-keep class com.example.ibarsanimelist.core.data.source.local.Converters { *; }
+-keepclassmembers class com.example.ibarsanimelist.core.data.source.local.Converters { *; }
+
+-keep class * extends com.google.gson.reflect.TypeToken
+-keepclassmembers class * {
+    com.google.gson.reflect.TypeToken typeToken;
+}
+
+
+
