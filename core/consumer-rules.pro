@@ -179,3 +179,6 @@
 -keep,allowobfuscation interface <1>
 
 -dontwarn kotlinx.**
+
+-keep class com.example.ibarsanimelist.core.data.Resource { *; }
+-keepclassmembers class com.example.ibarsanimelist.core.data.Resource$* { *; }
