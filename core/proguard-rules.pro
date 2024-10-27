@@ -53,6 +53,10 @@
 -keep class com.example.ibarsanimelist.core.data.Resource { *; }
 -keepclassmembers class com.example.ibarsanimelist.core.data.Resource$* { *; }
 
+-keep class com.example.ibarsanimelist.core.data.Resource$Error { *; }
+-keep class com.example.ibarsanimelist.core.data.Resource$Loading { *; }
+-keep class com.example.ibarsanimelist.core.data.Resource$Success { *; }
+
 
 
 
