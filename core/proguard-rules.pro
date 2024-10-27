@@ -35,7 +35,6 @@
 -keep class com.example.ibarsanimelist.core.data.source.remote.response.** { *; }
 -keepattributes Signature
 -keepattributes *Annotation*
--keep class com.example.ibarsanimelist.core.data.Resource { *; }
 
 -keep class com.google.gson.reflect.TypeToken { *; }
 -keepclassmembers class com.google.gson.reflect.TypeToken
@@ -49,6 +48,10 @@
 -keepclassmembers class * {
     com.google.gson.reflect.TypeToken typeToken;
 }
+
+# Menjaga seluruh kelas Resource dan subclassnya tetap utuh
+-keep class com.example.ibarsanimelist.core.data.Resource { *; }
+-keepclassmembers class com.example.ibarsanimelist.core.data.Resource$* { *; }
 
 
 

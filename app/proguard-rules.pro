@@ -35,3 +35,4 @@
 #-keep class androidx.lifecycle.LiveData { *; }
 
 -dontwarn com.google.android.gms.common.annotation.NoNullnessRewrite
+
